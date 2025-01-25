@@ -10,7 +10,10 @@ connectDB();
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
+
+// Increase the request size limit to 50MB (or any size you need)
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
